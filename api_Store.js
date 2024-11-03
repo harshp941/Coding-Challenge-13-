@@ -21,14 +21,30 @@ fetch(apiURL)
 // Task 3 Display Product Details Dynamically
 function displayProducts(products) {
     const productContainer = document.getElementById("product-container");
-    products.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.innerHTML = `
-            <h2>${product.name}</h2>
-            <img src="${product.image}" alt="${product.name}" />
-            <p>Company: ${product.company}</p>
-            <p>Price: $${product.price}</p>
-        `;
-        productContainer.appendChild(productElement);
+ products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+
+        const productImage = document.createElement('img');
+        productImage.src = product.image; // this is for images
+        productImage.alt = product.title; // this is for title
+        productImage.classList.add('product-image');
+
+        const companyName = document.createElement('h3');
+        companyName.textContent = `Company: ${product.brand'}`; // this is for company name
+
+        const productName = document.createElement('h4');
+        productName.textContent = `Product: ${product.title}`;
+
+        const productPrice = document.createElement('p');
+        productPrice.textContent = `Price: $${product.price.toFixed(2)}`;
+
+        productDiv.appendChild(productImage);
+        productDiv.appendChild(companyName);
+        productDiv.appendChild(productName);
+        productDiv.appendChild(productPrice);
+
+        productContainer.appendChild(productDiv);
     });
 }
+fetchProducts();
